@@ -15,17 +15,19 @@ const getTodos = (req, res) => {
 
 const postTodos = (req, res) => {
   const { description } = req.body;
+
   sqlDb
-    .query("INSERT INTO todos (description) VALUES (?)", [description])
+    .query("INSERT INTO todos(description) VALUES (?)", [description])
     .then(([result]) => {
       res.status(201).json({ id: result.insertId });
     })
     .catch((err) => {
-      res.status(500).send("Error inserting posTodos", err);
+      res.status(500).send("Error inserting postTodos", err);
     });
 };
 const deleteTodos = (req, res) => {
-  let { id } = req.body; // ou req.params si router.delete avec :id
+  // let { id } = req.body; // ou req.params si router.delete avec :id
+  let { id } = req.params;
   id = parseInt(id, 10); // ou Number(id)
   sqlDb
     .query("DELETE FROM todos WHERE id = ?", [id]) // il s'agit d'une requete preparer qui evite les injections SQL
@@ -46,7 +48,8 @@ const deleteTodos = (req, res) => {
 };
 
 const updateTodos = (req, res) => {
-  let { id } = req.body; // ou req.params si router.delete avec :id
+  // let { id } = req.body; // ou req.params si router.delete avec :id
+  let { id } = req.params;
   id = parseInt(id, 10); // ou Number(id)
   const { description } = req.body;
   sqlDb

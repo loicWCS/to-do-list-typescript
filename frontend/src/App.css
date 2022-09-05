@@ -53,4 +53,9 @@ code {
 
 button {
   font-size: calc(10px + 2vmin);
+
+}
+input{
+  width: 20%;
+  background-color: white;
 }

@@ -14,7 +14,7 @@ router.delete("/items/:id", itemControllers.destroy);
 
 router.get("/todos", todoControllers.getTodos);
 router.post("/todos", todoControllers.postTodos);
-router.put("/todos", todoControllers.updateTodos); // router.put("/todos/:id", todoControllers.updateTodos);
-router.delete("/todos", todoControllers.deleteTodos); // ou router.delete("/todos/:id", todoControllers.deleteTodos);
+router.put("/todos/:id", todoControllers.updateTodos); // ou router.put("/todos", todoControllers.updateTodos);
+router.delete("/todos/:id", todoControllers.deleteTodos); // ou router.delete("/todos", todoControllers.deleteTodos);
 
 module.exports = router;
